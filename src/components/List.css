@@ -1,0 +1,9 @@
+.List {
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-container {
+  display: flex;
+  background-color: #f5f5f5;
+}
