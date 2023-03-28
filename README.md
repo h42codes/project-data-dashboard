@@ -12,7 +12,7 @@ The following **required** functionality is completed:
 
 - [x] **The list displays a list of data fetched using an API call**
 - [x] **Data uses the useEffect React hook and async/await syntax**
-- [ ] **The app dashboard includes at least three summary statistics about the data such as**
+- [x] **The app dashboard includes at least three summary statistics about the data such as**
 
   - [x] total number of items in the dataset
   - [x] number of items that meet certain criteria (closed brewries, micro breweries )
