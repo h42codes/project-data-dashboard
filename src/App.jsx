@@ -31,30 +31,74 @@ function App() {
     setBreweries(filteredBreweries);
   };
 
+  // const searchBreweries = (searchValue) => {
+  //   setSearchInput(searchValue);
+  //   if (searchValue !== "") {
+  //     if (state) {
+  //       const searchResult = filteredBreweries.filter((brewery) => {
+  //         return brewery.name.toLowerCase().includes(searchValue.toLowerCase());
+  //       });
+  //       setFilteredBreweries(searchResult);
+  //     } else {
+  //       const searchResult = breweries.filter((brewery) => {
+  //         return brewery.name.toLowerCase().includes(searchValue.toLowerCase());
+  //       });
+  //       setFilteredBreweries(searchResult);
+  //     }
+  //   } else {
+  //     setFilteredBreweries(breweries);
+  //   }
+  // };
+
+  // const searchState = (searchValue) => {
+  //   setState(searchValue);
+  //   if (searchValue !== "") {
+  //     if (searchInput) {
+  //       const searchResult = filteredBreweries.filter((brewery) => {
+  //         return brewery.state_province
+  //           .toLowerCase()
+  //           .includes(searchValue.toLowerCase());
+  //       });
+  //       setFilteredBreweries(searchResult);
+  //     } else {
+  //       const searchResult = breweries.filter((brewery) => {
+  //         return brewery.state_province
+  //           .toLowerCase()
+  //           .includes(searchValue.toLowerCase());
+  //       });
+  //       setFilteredBreweries(searchResult);
+  //     }
+  //   } else {
+  //     setFilteredBreweries(breweries);
+  //   }
+  // };
+
   const searchBreweries = (searchValue) => {
     setSearchInput(searchValue);
-    if (searchValue !== "") {
-      const filteredBreweries = breweries.filter((brewery) => {
-        return brewery.name.toLowerCase().includes(searchValue.toLowerCase());
-      });
-      setFilteredBreweries(filteredBreweries);
-    } else {
-      setFilteredBreweries(breweries);
-    }
+    const searchResult = breweries.filter((brewery) => {
+      const nameMatch = brewery.name
+        .toLowerCase()
+        .includes(searchValue.toLowerCase());
+      const stateMatch = brewery.state_province
+        .toLowerCase()
+        .includes(state.toLowerCase());
+      return nameMatch && stateMatch;
+    });
+    setFilteredBreweries(searchResult);
   };
 
   const searchState = (searchValue) => {
     setState(searchValue);
-    if (searchValue !== "") {
-      const filteredBreweries = breweries.filter((brewery) => {
-        return brewery.state_province
-          .toLowerCase()
-          .includes(searchValue.toLowerCase());
-      });
-      setFilteredBreweries(filteredBreweries);
-    } else {
-      setFilteredBreweries(breweries);
-    }
+    const searchResult = breweries.filter((brewery) => {
+      const nameMatch = brewery.name
+        .toLowerCase()
+        .includes(searchInput.toLowerCase());
+      const stateMatch = brewery.state_province
+        .toLowerCase()
+        .includes(searchValue.toLowerCase());
+      return nameMatch && stateMatch;
+    });
+    setFilteredBreweries(searchResult);
   };
 
   return (
