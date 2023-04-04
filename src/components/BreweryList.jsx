@@ -1,7 +1,26 @@
+import { useEffect } from "react";
 import BreweryCard from "./BreweryCard";
 import "./BreweryList.css";
+import { BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
 
 const BreweryList = ({ breweries }) => {
+  const breweryCounts = {};
+  breweries.forEach((brewery) => {
+    const breweryType = brewery.brewery_type;
+    if (breweryType in breweryCounts) {
+      breweryCounts[breweryType]++;
+    } else {
+      breweryCounts[breweryType] = 1;
+    }
+  });
+
+  const breweryTypeCounts = Object.entries(breweryCounts).map(
+    ([breweryType, count]) => ({
+      type: breweryType,
+      count: count,
+    })
+  );
+
   const mostFrequentType = () => {
     let types = {};
     breweries.forEach((b) => {
@@ -39,6 +58,14 @@ const BreweryList = ({ breweries }) => {
           {breweries.filter((b) => b.brewery_type == "micro").length} total) of
           breweries
         </p>
+      </div>
+      <div className="brewery-chart">
+        <BarChart width={700} height={300} data={breweryTypeCounts}>
+          <Bar dataKey="count" fill="#85586f" />
+          <XAxis dataKey="type" />
+          <YAxis />
+          <Tooltip />
+        </BarChart>
       </div>
       <div className="brewery-container">
         {breweries.map((brewery) => (
