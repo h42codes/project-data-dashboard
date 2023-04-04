@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./BreweryCard.css";
 
 const BreweryCard = ({ brewery }) => {
@@ -11,6 +12,8 @@ const BreweryCard = ({ brewery }) => {
       <p>{brewery.street}</p>
       <p>{brewery.phone}</p>
       {brewery.website_url && <a href={brewery.website_url}>Website</a>}
+      <br />
+      <Link to={`/breweryDetails/${brewery.id}`}>Full Details</Link>
     </div>
   );
 };
